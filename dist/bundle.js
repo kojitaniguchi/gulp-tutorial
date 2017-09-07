@@ -22633,7 +22633,7 @@ var Counter = function (_Component) {
         key: 'handleClick',
         value: function handleClick() {
             this.setState({
-                count: this.state.count + 2
+                count: this.state.count + 1
             });
         }
     }, {

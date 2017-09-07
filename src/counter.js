@@ -10,7 +10,7 @@ export default class Counter extends Component {
 
     handleClick() {
         this.setState({
-            count: this.state.count + 2
+            count: this.state.count + 1
         });
     }
 
