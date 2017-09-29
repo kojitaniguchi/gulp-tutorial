@@ -9,7 +9,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        bundle: './src/app.jsx'
+        bundle: './src/index.jsx'
     },
     output: {
         path: path.join(__dirname, 'dist'),

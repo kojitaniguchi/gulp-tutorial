@@ -37,7 +37,7 @@ gulp.task('bs-reload', () => {
 // watch
 gulp.task('watch', () => {
   // src 配下の *.js ファイル,dist 配下の *.html,が変更されたときリロード。
-  return gulp.watch("./src/*.js", ['webpack']);
+  return gulp.watch("./src/*.jsx", ['webpack']);
   return gulp.watch("dist/*.html", ['bs-reload']);
 });
 
