@@ -1,8 +1,9 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import FormInput from './FormInput.jsx';
 import FormDisplay from './FormDisplay.jsx';
 
-// View (Container Components)
-
+// Presentational Components
 export default class FormApp extends React.Component {
   render() {
     return (
@@ -11,16 +12,14 @@ export default class FormApp extends React.Component {
           <h1>Redux + React</h1>
         </div>
         <div>
-          <FormInput handleClick={this.props.onClick} />
-        </div>
-        <div>
-          <FormDisplay data={this.props.value} />
+          <FormInput handleClick={this.props.handleClick} />
+          <FormDisplay data={this.props.data} />
         </div>
       </div>
     );
   }
 }
 FormApp.propTypes = {
-  onClick: React.PropTypes.func.isRequired,
-  value: React.PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  value: PropTypes.string,
 };

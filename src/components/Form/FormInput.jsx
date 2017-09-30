@@ -1,4 +1,7 @@
-// View (Presentational Components)
+import React from 'react';
+import PropTypes from 'prop-types';
+
+// Presentational Components
 export default class FormInput extends React.Component {
   send(e) {
     e.preventDefault();
@@ -16,5 +19,5 @@ export default class FormInput extends React.Component {
   }
 }
 FormInput.propTypes = {
-  handleClick: React.PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };

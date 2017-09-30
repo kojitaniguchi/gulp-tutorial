@@ -1,5 +1,5 @@
 import formReducer from './FormReducer.jsx';
 
-const reducers = formReducer;
+const Reducer = formReducer;
 
-export default reducers;
+export default Reducer;
