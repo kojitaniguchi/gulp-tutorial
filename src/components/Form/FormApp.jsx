@@ -20,6 +20,6 @@ export default class FormApp extends React.Component {
   }
 }
 FormApp.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
   value: PropTypes.string,
 };
