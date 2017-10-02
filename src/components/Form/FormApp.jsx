@@ -9,7 +9,7 @@ export default class FormApp extends React.Component {
     return (
       <div>
         <div>
-          <h1>Redux + React</h1>
+          <h1>編集</h1>
         </div>
         <div>
           <FormInput handleClick={this.props.handleClick} />
