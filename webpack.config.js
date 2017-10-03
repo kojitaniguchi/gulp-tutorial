@@ -9,7 +9,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        bundle: './src/index.jsx'
+        bundle: './src/client.jsx'
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -21,10 +21,6 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 test: /\.js[x]?$/,
-                query: {
-                    cacheDirectory: true,
-                    presets: ['react', 'es2015']
-                }
             }
         ]
     }

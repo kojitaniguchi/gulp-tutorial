@@ -23,7 +23,7 @@ gulp.task('webpack', () => {
 gulp.task('bs', () => {
   browserSync.init({
   server: {
-    baseDir: "./"
+    baseDir: "./dist/"
   },
   notify  : true,
   xip     : false
