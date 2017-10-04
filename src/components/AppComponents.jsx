@@ -14,11 +14,11 @@ export default class App extends React.Component {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/form'>Form</Link></li>
           </ul>
-          <hr />
+        <hr />
 
-         <Route exact path='/' render={props => <HomeApp data={this.props.value} />} />
-         <Route path='/form' render={props => <FormApp handleClick={this.props.onClick} data={this.props.value} />} />
-       </div>
+        <Route exact path='/' render={props => <HomeApp data={this.props.value} />} />
+        <Route path='/form' render={props => <FormApp handleClick={this.props.onClick} data={this.props.value} />} />
+        </div>
       </BrowserRouter>
     );
   }

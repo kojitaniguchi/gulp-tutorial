@@ -1,40 +1,27 @@
-/*::::::::::::::::::::::::::::::::::
- node_modules
-:::::::::::::::::::::::::::::::::::*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 
-/*::::::::::::::::::::::::::::::::::
- // Container
-:::::::::::::::::::::::::::::::::::*/
-import AppContainer from './containers/AppContainer.jsx'
+// Container
+import AppContainer from './containers/AppContainer.jsx';
 
-/*::::::::::::::::::::::::::::::::::
- reducers
-:::::::::::::::::::::::::::::::::::*/
+// reducers
 import Reducer from './reducers/AppReducer.jsx';
 
-/*::::::::::::::::::::::::::::::::::
- InitialState
-:::::::::::::::::::::::::::::::::::*/
+// InitialState
 const initialState = {
   value: null,
 };
-/*::::::::::::::::::::::::::::::::::
- InitialStore
-:::::::::::::::::::::::::::::::::::*/
+
+// InitialStore
 const store = createStore(Reducer, initialState);
 
-/*::::::::::::::::::::::::::::::::::
- InitialDOM
-:::::::::::::::::::::::::::::::::::*/
-let content = document.querySelector('.content');
+// InitialDOM
+const content = document.querySelector('.content');
 
-/*::::::::::::::::::::::::::::::::::
- Rendering
-:::::::::::::::::::::::::::::::::::*/
+// Rendering
 ReactDOM.render(
   <Provider store={store}>
     <AppContainer />

@@ -12967,38 +12967,24 @@ var _AppReducer2 = _interopRequireDefault(_AppReducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*::::::::::::::::::::::::::::::::::
- InitialState
-:::::::::::::::::::::::::::::::::::*/
+// InitialState
 
 
-/*::::::::::::::::::::::::::::::::::
- // Container
-:::::::::::::::::::::::::::::::::::*/
-/*::::::::::::::::::::::::::::::::::
- node_modules
-:::::::::::::::::::::::::::::::::::*/
+// Container
 var initialState = {
   value: null
 };
-/*::::::::::::::::::::::::::::::::::
- InitialStore
-:::::::::::::::::::::::::::::::::::*/
+
+// InitialStore
 
 
-/*::::::::::::::::::::::::::::::::::
- reducers
-:::::::::::::::::::::::::::::::::::*/
+// reducers
 var store = (0, _redux.createStore)(_AppReducer2.default, initialState);
 
-/*::::::::::::::::::::::::::::::::::
- InitialDOM
-:::::::::::::::::::::::::::::::::::*/
+// InitialDOM
 var content = document.querySelector('.content');
 
-/*::::::::::::::::::::::::::::::::::
- Rendering
-:::::::::::::::::::::::::::::::::::*/
+// Rendering
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
   { store: store },
@@ -30078,6 +30064,7 @@ var withRouter = function withRouter(Component) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
 /* Actionsの実装 */
 
 // Action名の定義

@@ -1,3 +1,4 @@
+
 /* Actionsの実装 */
 
 // Action名の定義
@@ -11,5 +12,5 @@ export default {
       type: SEND,
       value,
     };
-  }
+  },
 };
