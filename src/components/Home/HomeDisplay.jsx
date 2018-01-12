@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 // View (Presentational Components)
 export default class HomeDisplay extends React.Component {
@@ -9,9 +9,9 @@ export default class HomeDisplay extends React.Component {
         <p>現在のvalue</p>
         <div>{this.props.data}</div>
       </div>
-    );
+    )
   }
 }
 HomeDisplay.propTypes = {
   data: PropTypes.string,
-};
+}

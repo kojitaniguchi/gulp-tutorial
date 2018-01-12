@@ -7,10 +7,10 @@ const formReducer = (state, action) => {
         Object.assign({}, state, {
         value: action.value,
         })
-      );
+      )
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default formReducer;
+export default formReducer

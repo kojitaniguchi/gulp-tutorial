@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import HomeDisplay from './HomeDisplay.jsx';
+import React from 'react'
+import PropTypes from 'prop-types'
+import HomeDisplay from './HomeDisplay.jsx'
 
 
 // Presentational Components
@@ -18,9 +18,9 @@ export default class HomeApp extends React.Component {
           <HomeDisplay data={this.props.data} />
         </div>
       </div>
-    );
+    )
   }
 }
 HomeApp.propTypes = {
   value: PropTypes.string,
-};
+}

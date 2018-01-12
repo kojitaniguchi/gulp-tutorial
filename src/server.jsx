@@ -1,11 +1,11 @@
-import express from 'express';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import AppContainer from './containers/AppContainer';
+import express from 'express'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import AppContainer from './containers/AppContainer'
 
-const app = express();
+const app = express()
 
-app.use(express.static('dist'));
+app.use(express.static('dist'))
 
 app.get('/', (req, res) => {
   res.send(
@@ -15,12 +15,12 @@ app.get('/', (req, res) => {
           <AppContainer />
         </div>
         <script src="bundle.js" />
-      </div>.
+      </div>
     )
-  );
-});
+  )
+})
 
 // start listen
 app.listen(3000, () => {
-  console.log('SSR app listening on port 3000!');
-});
+  console.log('SSR app listening on port 3000!')
+})

@@ -2,7 +2,7 @@
 /* Actionsの実装 */
 
 // Action名の定義
-const SEND = 'SEND';
+const SEND = 'SEND'
 
 // Action Creators
 export default {
@@ -11,6 +11,6 @@ export default {
     return {
       type: SEND,
       value,
-    };
+    }
   },
-};
+}

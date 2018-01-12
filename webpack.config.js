@@ -5,7 +5,7 @@
 //  }
 //}
 
-const path = require('path');
+const path = require('path')
 
 module.exports = {
     entry: {
@@ -18,10 +18,10 @@ module.exports = {
     module: {
         loaders: [
             {
-                loader: 'babel-loader',
+                loader: 'babel-loader?cacheDirectory',
                 exclude: /node_modules/,
                 test: /\.js[x]?$/,
             }
         ]
     }
-};
+}
