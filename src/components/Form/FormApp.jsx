@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FormInput from './FormInput.jsx'
-import FormDisplay from './FormDisplay.jsx'
+import FormInput from './FormInput'
+import FormDisplay from './FormDisplay'
 
 // Presentational Components
 export default class FormApp extends React.Component {
