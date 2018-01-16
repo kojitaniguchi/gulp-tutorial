@@ -20,6 +20,12 @@ app.get('/', (req, res) => {
   )
 })
 
+get.app('/image', (req, res) => {
+  
+})
+
+
+
 // start listen
 app.listen(3000, () => {
   console.log('SSR app listening on port 3000!')

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import App from './../components/AppComponents.jsx'
-import FormActions from './../actions/FormActions.jsx'
+import App from './../components/AppComponents'
+import FormActions from './../actions/FormActions'
 
 // Sotreのstateをpropsを通して、Container Componentsで使えるようにする関数
 // stateは「value」として
