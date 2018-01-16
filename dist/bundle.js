@@ -12973,10 +12973,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Container
 var initialState = {
   value: null
+
+  // InitialStore
 };
-
-// InitialStore
-
 
 // reducers
 var store = (0, _redux.createStore)(_AppReducer2.default, initialState);
@@ -26743,7 +26742,7 @@ exports.default = FormApp;
 
 FormApp.propTypes = {
   handleClick: _propTypes2.default.func.isRequired,
-  value: _propTypes2.default.string
+  data: _propTypes2.default.string
 };
 
 /***/ }),
@@ -26801,7 +26800,7 @@ var FormInput = function (_React$Component) {
       return _react2.default.createElement(
         'form',
         null,
-        _react2.default.createElement('input', { type: 'text', ref: function ref(_ref) {
+        _react2.default.createElement('input', { id: 'i', type: 'text', ref: function ref(_ref) {
             return _this2.myInput = _ref;
           }, defaultValue: '' }),
         _react2.default.createElement(

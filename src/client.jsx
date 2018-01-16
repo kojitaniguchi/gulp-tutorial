@@ -1,22 +1,34 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-
+import logger from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas'
 // Container
-import AppContainer from './containers/AppContainer'
+import AppContainer from './containers/AppContainer.jsx'
 
 // reducers
-import Reducer from './reducers/AppReducer'
+import Reducer from './reducers/AppReducer.jsx'
 
 // InitialState
 const initialState = {
   value: null,
 }
 
+// sagamiddleware
+const sagamiddleware = createSagaMiddleware()
+
 // InitialStore
-const store = createStore(Reducer, initialState)
+const store = createStore(
+  Reducer,
+  initialState,
+  applyMiddleware(
+    sagamiddleware, logger()
+  )
+)
+sagaMiddleware.run(rootSaga)
 
 // InitialDOM
 const content = document.querySelector('.content')

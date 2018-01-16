@@ -12,7 +12,7 @@ export default class FormInput extends React.Component {
   render() {
     return (
       <form>
-        <input type="text" ref={(ref) => (this.myInput = ref)} defaultValue="" />
+        <input id="i" type="text" ref={(ref) => (this.myInput = ref)} defaultValue="" />
         <button onClick={(event) => this.send(event)}>Send</button>
       </form>
     )
