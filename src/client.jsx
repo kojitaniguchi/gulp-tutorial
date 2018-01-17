@@ -10,7 +10,7 @@ import rootSaga from './sagas'
 import AppContainer from './containers/AppContainer.jsx'
 
 // reducers
-import Reducer from './reducers/AppReducer.jsx'
+import Reducers from './reducers/AppReducer.jsx'
 
 // InitialState
 const initialState = {

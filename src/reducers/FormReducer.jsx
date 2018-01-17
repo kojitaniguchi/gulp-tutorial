@@ -8,6 +8,8 @@ const formReducer = (state, action) => {
         value: action.value,
         })
       )
+    break
+    case 'IMAGE':
     default:
       return state
   }
