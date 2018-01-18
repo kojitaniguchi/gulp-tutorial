@@ -8,6 +8,7 @@ let mapStateToProps = (state) => {
   return {
     // propsを通して取得する際に使う名前: Storeのstateの値
     value: state.value,
+    data: state.sata,
   }
 }
 

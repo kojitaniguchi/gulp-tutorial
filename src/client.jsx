@@ -12,10 +12,10 @@ import AppContainer from './containers/AppContainer.jsx'
 // reducers
 import Reducers from './reducers/AppReducer.jsx'
 
-// InitialState
-const initialState = {
-  value: null,
-}
+// // InitialState
+// const initialState = {
+//   value: null,
+// }
 
 // sagamiddleware
 const sagamiddleware = createSagaMiddleware()
@@ -23,7 +23,6 @@ const sagamiddleware = createSagaMiddleware()
 // InitialStore
 const store = createStore(
   Reducer,
-  initialState,
   applyMiddleware(
     sagamiddleware, logger()
   )
