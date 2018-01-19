@@ -1,35 +1,33 @@
 /* Reducersの実装 */
 import { handleAction } from 'redux-actions'
-import actions from  './FormActions'
+import actions from  './../actions/FormActions.jsx'
 
 const initialState = {
-    value : '',
-    data : '',
-    requestimage: ''
+    value : null,
+    data : null,
+    requestimage: null
 };
 
 // 第一引数はreducerの設定を入れたオブジェクト
 // 第二引数は初期stateオブジェクト
 export default handleActions({
     [actions.send] : (state, action) => ({
-        ...state,
+        state,
         value : action.payload.value,
     }),
     [actions.successUser] : (state, actions) => ({
-        ...state,
+        state,
         data : action.payload.data,
     }),
     [actions.failureUser] : (state, actions) => ({
-        ...state,
+        state,
         data : '',
     }),
     [actions.requestImage] : (state, actions) => ({
-        ...state,
+        state,
         requestimage : action.payload,
     }),
 }, initialState);
-
-export default formReducer
 
 //
 // const formReducer = (state, action) => {

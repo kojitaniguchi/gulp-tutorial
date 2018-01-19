@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import HomeDisplay from './HomeDisplay'
+import HomeDisplay from './HomeDisplay.jsx'
 
 
 // Presentational Components

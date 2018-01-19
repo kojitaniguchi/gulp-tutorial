@@ -1,4 +1,4 @@
-import formReducer from './FormReducer'
+import formReducer from './FormReducer.jsx'
 
 const Reducer = formReducer
 

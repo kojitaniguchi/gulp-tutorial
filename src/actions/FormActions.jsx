@@ -1,14 +1,19 @@
-import { createAction, handleAction } from 'redux-actions'
-import types from './actionTypes'
+import { createAction } from 'redux-actions'
+import types from './actionTypes.jsx'
 
-export default createActions(
+const SEND = 'SEND'
+const REQUEST_IMAGE = 'REQUEST_IMAGE'
+const SUCCESS_USER = 'SUCCESS_USER'
+const FAILURE_USER = 'FAILURE_USER'
+
+export default createAction(
     {
-        [types.SEND : (value) => { value : value},
-        [types.SUCCESS_USER] : (data) => { data : data},
-        [types.FAILURE_USER] : (data) => { data : data},
+        [SEND] : (value) => { value : value},
+        [SUCCESS_USER] : (data) => { data : data},
+        [FAILURE_USER] : (data) => { data : data},
     },
-    types.REQUEST_IMAGE,
-);
+    REQUEST_IMAGE,
+)
 // /* Actionsの実装 */
 // // Action名の定義
 // const send = 'SEND'

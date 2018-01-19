@@ -1,6 +1,7 @@
 import { delay } from 'redux-saga'
 import { call, put, fork, take } from 'redux-saga/effects'
-import api from './api'
+import "babel-polyfill"
+import api from './api.jsx'
 
 function* handleRequestImage() {
   while (true) {

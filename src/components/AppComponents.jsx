@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FormApp from './Form/FormApp'
-import HomeApp from './Home/HomeApp'
+import FormApp from './Form/FormApp.jsx'
+import HomeApp from './Home/HomeApp.jsx'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 // Container Components
