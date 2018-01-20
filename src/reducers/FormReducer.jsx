@@ -2,32 +2,30 @@
 import { handleAction } from 'redux-actions'
 import actions from  './../actions/FormActions.jsx'
 
-const initialState = {
+const defaultlState = {
     value : null,
     data : null,
-    requestimage: null
+    error: null,
 };
 
 // 第一引数はreducerの設定を入れたオブジェクト
 // 第二引数は初期stateオブジェクト
-export default handleActions({
-    [actions.send] : (state, action) => ({
+export default handleAction({
+    SEND : (state, action) => ({
         state,
         value : action.payload.value,
     }),
-    [actions.successUser] : (state, actions) => ({
+    SUCCESS_USER : (state, action) => ({
         state,
         data : action.payload.data,
     }),
-    [actions.failureUser] : (state, actions) => ({
+    //If the payload is an instance of an Error object,
+    //redux-actions will automatically set action.error to true
+    FAILURE_USER : (state, action) => ({
         state,
-        data : '',
+        error : action.error,
     }),
-    [actions.requestImage] : (state, actions) => ({
-        state,
-        requestimage : action.payload,
-    }),
-}, initialState);
+}, defaultlState);
 
 //
 // const formReducer = (state, action) => {

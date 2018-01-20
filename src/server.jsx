@@ -20,11 +20,6 @@ app.get('/', (req, res) => {
   )
 })
 
-get.app('/image', (req, res) => {
-  
-})
-
-
 
 // start listen
 app.listen(3000, () => {

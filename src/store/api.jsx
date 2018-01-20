@@ -10,7 +10,7 @@
   }
 
   function parseJSON(response) {
-    return response.json().data
+    return response.json()
   }
 
   function fetchData(keyword) {

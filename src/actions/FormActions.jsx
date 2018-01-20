@@ -8,11 +8,11 @@ const FAILURE_USER = 'FAILURE_USER'
 
 export default createAction(
     {
-        [SEND] : (value) => { value : value},
-        [SUCCESS_USER] : (data) => { data : data},
-        [FAILURE_USER] : (data) => { data : data},
-    },
-    REQUEST_IMAGE,
+        SEND : (value) => { value : value},
+        SUCCESS_USER : (data) => { data : data},
+        REQUEST_IMAGE : (keyword) => { keyword : keyword},
+        FAILURE_USER : (erorr) => { error : erorr}
+    }
 )
 // /* Actionsの実装 */
 // // Action名の定義
