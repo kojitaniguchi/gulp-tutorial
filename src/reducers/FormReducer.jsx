@@ -1,31 +1,37 @@
 /* Reducersの実装 */
-import { handleAction } from 'redux-actions'
-import actions from  './../actions/FormActions.jsx'
+import { handleActions } from 'redux-actions'
+import actions from  './../actions/actions.jsx'
 
-const defaultlState = {
+const initialState = {
     value : null,
     data : null,
-    error: null,
-};
+    error : null,
+}
 
 // 第一引数はreducerの設定を入れたオブジェクト
 // 第二引数は初期stateオブジェクト
-export default handleAction({
-    SEND : (state, action) => ({
+const formReducer = handleActions({
+     // キーについて
+     // switchで書く場合のアクションタイプ(文字列)をオブジェクトのキにする
+     // オブジェクトのキーに[]で囲んだ変数を入れると、文字列と判定され、toString() が呼ばれる
+     // createActionsで作られたアクションはtoStringでアクションタイプを返すので、キーにできる
+    [actions.send] : (state, action) => ({
         state,
         value : action.payload.value,
     }),
-    SUCCESS_USER : (state, action) => ({
+    [actions.successUser] : (state, action) => ({
         state,
         data : action.payload.data,
     }),
-    //If the payload is an instance of an Error object,
-    //redux-actions will automatically set action.error to true
-    FAILURE_USER : (state, action) => ({
+    // If the payload is an instance of an Error object,
+    // redux-actions will automatically set action.error to true
+    [actions.failureUser] : (state, action) => ({
         state,
         error : action.error,
     }),
-}, defaultlState);
+}, initialState);
+
+export default formReducer
 
 //
 // const formReducer = (state, action) => {
