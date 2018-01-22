@@ -13,7 +13,7 @@ export default class FormApp extends React.Component {
         </div>
         <div>
           <FormInput handleClick={this.props.handleClick} />
-          <FormDisplay data={this.props.data} />
+          <FormDisplay value={this.props.value} />
         </div>
       </div>
     )
@@ -21,5 +21,5 @@ export default class FormApp extends React.Component {
 }
 FormApp.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  data: PropTypes.string,
+  value: PropTypes.string,
 }

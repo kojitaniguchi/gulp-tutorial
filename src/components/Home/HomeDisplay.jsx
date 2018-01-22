@@ -7,7 +7,7 @@ export default class HomeDisplay extends React.Component {
     return (
       <div>
         <p>現在のvalue</p>
-        <div>{this.props.data}</div>
+        <div>{this.props.value}</div>
       </div>
     )
   }

@@ -21,6 +21,7 @@ const logger = createLogger()
 const store = createStore(Reducers, applyMiddleware(sagaMiddleware, logger))
 sagaMiddleware.run(rootSaga)
 
+
 // InitialDOM
 const content = document.querySelector('.content')
 

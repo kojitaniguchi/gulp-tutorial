@@ -16,14 +16,14 @@ export default class App extends React.Component {
           </ul>
         <hr />
 
-        <Route exact path='/' render={props => <HomeApp data={this.props.value} />} />
-        <Route path='/form' render={props => <FormApp handleClick={this.props.onClick} data={this.props.value} />} />
+        <Route exact path='/' render={props => <HomeApp value={this.props.value} />} />
+        <Route path='/form' render={props => <FormApp handleClick={this.props.handleClick} value={this.props.value} />} />
         </div>
       </BrowserRouter>
     )
   }
 }
 App.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
   value: PropTypes.string,
 }

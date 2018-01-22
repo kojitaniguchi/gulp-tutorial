@@ -3,25 +3,25 @@ import { handleActions } from 'redux-actions'
 import actions from  './../actions/actions.jsx'
 
 const initialState = {
-    value : null,
+    value : '',
     data : null,
     error : null,
 }
 
 // 第一引数はreducerの設定を入れたオブジェクト
 // 第二引数は初期stateオブジェクト
-const formReducer = handleActions({
+const formReducers = handleActions({
      // キーについて
      // switchで書く場合のアクションタイプ(文字列)をオブジェクトのキにする
      // オブジェクトのキーに[]で囲んだ変数を入れると、文字列と判定され、toString() が呼ばれる
      // createActionsで作られたアクションはtoStringでアクションタイプを返すので、キーにできる
-    [actions.send] : (state, action) => ({
+    [actions.sendValue] : (state, action) => ({
         state,
-        value : action.payload.value,
+        value : action.payload,
     }),
     [actions.successUser] : (state, action) => ({
         state,
-        data : action.payload.data,
+        data : action.payload,
     }),
     // If the payload is an instance of an Error object,
     // redux-actions will automatically set action.error to true
@@ -31,7 +31,7 @@ const formReducer = handleActions({
     }),
 }, initialState);
 
-export default formReducer
+export default formReducers
 
 //
 // const formReducer = (state, action) => {
