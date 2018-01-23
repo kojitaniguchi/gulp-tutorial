@@ -1,24 +1,25 @@
 
-import { call, put, fork, take } from 'redux-saga/effects'
+import { call, put, fork, takeEvery } from 'redux-saga/effects'
 import 'babel-polyfill'
-import api from './api.jsx'
-import actions from  './../actions/actions.jsx'
+import fetchData from './api.jsx'
+import actions from './../actions/actions.jsx'
 
-function* requestImage() {
-  while (true) {
-    const action = yield take('REQUEST_IMAGE')
-    const { payload, error } = yield call(api.fetchData, action.payload.keyword)
-    if (payload && !error) {
-      yield put(actions.successUser(payload))
+function* requestImage(action) {
+    const { data, error } = yield call(fetchData, action.payload)
+    if ( data && !error) {
+      yield put(actions.successUser(data))
     } else {
-      yield put(actions.failureUser(error))
+      yield put(actions.failureUser({ error }))
     }
-  }
+}
+
+function* getRequestImageAction() {
+  yield takeEvery('REQUEST_IMAGE', requestImage)
 }
 
 export default function* rootSaga() {
 // fork作用を使ってredux-sagaに別タスクの起動
 // yieldを使ってredux-sagaの実行環境にコードに値を渡す
-  yield fork(requestImage)
+  yield fork(getRequestImageAction)
 }
 // rootSagaタスクとrequestImageタスクの二つが動いている

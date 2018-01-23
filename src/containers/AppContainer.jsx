@@ -18,7 +18,12 @@ let mapDispatchToProps = (dispatch) => {
     handleClick: (value) => {
       console.log(actions.sendValue(value)),
       dispatch(actions.sendValue(value))
+    },
+    getImage: (keyword) => {
+    console.log(actions.requestImage(keyword)),
+    dispatch(actions.requestImage(keyword))
     }
+
   }
 }
 

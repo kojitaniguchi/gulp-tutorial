@@ -10,16 +10,24 @@
   }
 
   function parseJSON(response) {
-    return response.json()
+    let json = response.json()
+    return json
   }
 
-  function fetchData(keyword) {
-    const myRequest = `https://sinatra-api-kojitaniguchi.c9users.io/image/${keyword}`
-    fetch(myRequest, {mode: 'cors'} )
+  function consoleLog(json) {
+    let data = json.data
+    console.log('request succeeded with JSON response', data)
+    return data
+  }
+
+  const fetchData = (keyword) => {
+    const myRequest = `https://imgjusapi.herokuapp.com/image/` + keyword.toString()
+     fetch(myRequest, {mode: 'cors'} )
     .then(checkStatus)
     .then(parseJSON)
-    .then(payload => { payload })
-    .catch(error => { error });
+    .then(consoleLog)
+    .then((data) => { return data })
+    .catch((error) => { error });
   }
 
-export { fetchData }
+export default fetchData
