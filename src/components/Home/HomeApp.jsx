@@ -15,7 +15,7 @@ export default class HomeApp extends React.Component {
           <p>routerの実装中</p>
         </div>
         <div>
-          <HomeDisplay data={this.props.data} />
+          <HomeDisplay value={this.props.value} />
         </div>
       </div>
     )

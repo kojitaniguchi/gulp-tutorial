@@ -17,7 +17,7 @@ export default class ImageApp extends React.Component {
           <h2>取得した画像</h2>
         </div>
         <div>
-          <ImageDisplay data={this.props.data}/>
+          <ImageDisplay data={this.props.data} error={this.props.error}/>
         </div>
       </div>
     )
@@ -25,5 +25,6 @@ export default class ImageApp extends React.Component {
 }
 ImageApp.propTypes = {
   getImage: PropTypes.func.isRequired,
-  data: PropTypes.object,
+  data: PropTypes.string,
+  error: PropTypes.string,
 }

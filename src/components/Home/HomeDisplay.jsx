@@ -13,5 +13,5 @@ export default class HomeDisplay extends React.Component {
   }
 }
 HomeDisplay.propTypes = {
-  data: PropTypes.string,
+  value: PropTypes.string,
 }

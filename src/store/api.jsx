@@ -1,7 +1,7 @@
 
   function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
-      return response
+     return response
     } else {
       var error = new Error(response.statusText)
       error.response = response
@@ -20,14 +20,12 @@
     return data
   }
 
-  const fetchData = (keyword) => {
+async function fetchData(keyword) {
     const myRequest = `https://imgjusapi.herokuapp.com/image/` + keyword.toString()
-     fetch(myRequest, {mode: 'cors'} )
+    await fetch(myRequest, {mode: 'cors'} )
     .then(checkStatus)
     .then(parseJSON)
     .then(consoleLog)
-    .then((data) => { return data })
-    .catch((error) => { error });
-  }
-
+    .catch((error) => {return "error"})
+}
 export default fetchData

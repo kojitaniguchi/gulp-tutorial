@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
         <Route exact path='/' render={props => <HomeApp value={this.props.value} />} />
         <Route path='/form' render={props => <FormApp handleClick={this.props.handleClick} value={this.props.value} />} />
-        <Route path='/image' render={props => <ImageApp getImage={this.props.getImage} data={this.props.data} />} />
+        <Route path='/image' render={props => <ImageApp getImage={this.props.getImage} data={this.props.data} error={this.props.error}/>} />
         </div>
       </BrowserRouter>
     )
@@ -30,5 +30,6 @@ App.propTypes = {
   handleClick: PropTypes.func.isRequired,
   value: PropTypes.string,
   getImage: PropTypes.func.isRequired,
-  data: PropTypes.object,
+  data: PropTypes.string,
+  error: PropTypes.string,
 }

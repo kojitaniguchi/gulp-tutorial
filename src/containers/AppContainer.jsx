@@ -7,6 +7,7 @@ let mapStateToProps = (state) => {
   return {
     value: state.value,
     data: state.data,
+    error: state.error,
   }
 }
 
@@ -20,7 +21,6 @@ let mapDispatchToProps = (dispatch) => {
       dispatch(actions.sendValue(value))
     },
     getImage: (keyword) => {
-    console.log(actions.requestImage(keyword)),
     dispatch(actions.requestImage(keyword))
     }
 
