@@ -5,9 +5,9 @@ import actions from './../actions/actions.jsx'
 // Sotreのstateをpropsを通して、Container Componentsで使えるようにする関数
 let mapStateToProps = (state) => {
   return {
-    value: state.value,
-    data: state.data,
-    error: state.error,
+    value: state.formReducers.value,
+    data: state.imageReducers.data,
+    error: state.imageReducers.error,
   }
 }
 

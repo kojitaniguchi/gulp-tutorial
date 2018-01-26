@@ -4,8 +4,6 @@ import actions from  './../actions/actions.jsx'
 
 const initialState = {
     value : '',
-    data : '',
-    error : '',
 }
 
 // 第一引数はreducerの設定を入れたオブジェクト
@@ -19,17 +17,7 @@ const formReducers = handleActions({
         state,
         value : action.payload,
     }),
-    [actions.successUser] : (state, action) => ({
-        state,
-        data : action.payload,
-    }),
-    // If the payload is an instance of an Error object,
-    // redux-actions will automatically set action.error to true
-    [actions.failureUser] : (state, action) => ({
-        state,
-        error : action.payload,
-    }),
-}, initialState);
+}, initialState)
 
 export default formReducers
 
