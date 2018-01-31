@@ -12,7 +12,7 @@ export default class HomeApp extends React.Component {
           <h1>ようこそRedux + Reactへ</h1>
         </div>
         <div>
-          <p>routerの実装中</p>
+          <img src="./img/neko.jpg" />
         </div>
         <div>
           <HomeDisplay value={this.props.value} />

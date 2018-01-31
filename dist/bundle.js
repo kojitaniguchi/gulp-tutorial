@@ -33287,11 +33287,7 @@ var HomeApp = function (_React$Component) {
         _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(
-            'p',
-            null,
-            'router\u306E\u5B9F\u88C5\u4E2D'
-          )
+          _react2.default.createElement('img', { src: './img/neko.jpg' })
         ),
         _react2.default.createElement(
           'div',
@@ -33599,7 +33595,7 @@ var ImageDisplay = function (_React$Component) {
           null,
           this.props.error
         ),
-        _react2.default.createElement('img', { src: this.props.data, width: '500', height: '500' })
+        _react2.default.createElement('img', { src: this.props.data, width: '500', height: '500', alt: '\u691C\u7D22\u3057\u3066\u304F\u3060\u3055\u3044' })
       );
     }
   }]);

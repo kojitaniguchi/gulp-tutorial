@@ -6,7 +6,7 @@ export default class ImageDisplay extends React.Component {
     return (
       <div>
         <p>{this.props.error}</p>
-        <img src={this.props.data} width="500" height="500" />
+        <img src={this.props.data} width="500" height="500" alt="検索してください" />
       </div>
     )
   }
