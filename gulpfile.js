@@ -3,21 +3,34 @@ const gulp = require("gulp")
 const webpackStream = require("webpack-stream")
 const webpack = require("webpack")
 const browserSync = require('browser-sync').create()
+const runSequence = require('run-sequence')
+
 
 // webpackの設定ファイルの読み込み
-const webpackConfig = require("./webpack.config")
+const {serverConfig, clientConfig} = require("./webpack.config")
 
 
 // webpack
-gulp.task('webpack', () => {
+gulp.task('serverWebpack', () => {
   // webpackStreamの第2引数にwebpackを渡す
-  return webpackStream(webpackConfig, webpack)
+  return webpackStream(serverConfig, webpack)
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.reload({
       stream: true,
       once  : true
     }))
 })
+
+gulp.task('clientWebpack', () => {
+  return webpackStream(clientConfig, webpack)
+    .pipe(gulp.dest("dist"))
+    .pipe(browserSync.reload({
+      stream: true,
+      once  : true
+    }))
+})
+
+
 
 // browser-sync
 gulp.task('bs', () => {
@@ -43,4 +56,4 @@ gulp.task('watch', () => {
 })
 
 // default
-gulp.task("default", ['webpack','bs','watch','bs-reload'] )
+gulp.task("default", ['serverWebpack', 'clientWebpack','bs','watch','bs-reload'] )

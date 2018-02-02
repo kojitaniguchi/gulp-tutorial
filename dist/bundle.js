@@ -43867,7 +43867,6 @@ function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   } else {
-    debugger;
     var error = new Error(response.statusText);
     error.response = response;
     throw error;
@@ -43887,7 +43886,7 @@ function consoleLog(json) {
 }
 
 function fetchData(keyword) {
-  var myRequest = 'https://imgjusapi.herokuapp.com/image/' + keyword.toString();
+  var myRequest = '/image/' + keyword.toString();
   // returnはfetchの前につけないとpromiseが返らない
   return fetch(myRequest, { mode: 'cors' }).then(checkStatus).then(parseJSON).catch(function (error, data) {
     error;

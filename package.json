@@ -7,7 +7,7 @@
     "production": "webpack -p",
     "develop": "webpack -d",
     "watch": "webpack -d --watch",
-    "start": "babel-node src/server.jsx",
+    "start": "node dist/server.js",
     "server": "browser-sync start --server --files \"**/*\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +16,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
+    "dotenv": "^5.0.0",
     "express": "^4.16.2",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
@@ -43,7 +44,10 @@
     "prop-types": "^15.6.0",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
+    "run-sequence": "^2.2.1",
+    "superagent": "^3.8.2",
     "webpack": "^3.10.0",
-    "webpack-stream": "^4.0.0"
+    "webpack-stream": "^4.0.0",
+    "whatwg-fetch": "^2.0.3"
   }
 }
