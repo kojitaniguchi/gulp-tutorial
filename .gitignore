@@ -6,3 +6,4 @@
 
 /dist/.DS_Store
 /dist/bundle.js
+/dist/server.js

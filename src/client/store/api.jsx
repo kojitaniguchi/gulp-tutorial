@@ -23,7 +23,7 @@
 function fetchData(keyword) {
     const myRequest = `/image/` + keyword.toString()
     // returnはfetchの前につけないとpromiseが返らない
-    return  fetch(myRequest, {mode: 'cors'} )
+    return  fetch(myRequest)
     .then(checkStatus)
     .then(parseJSON)
     .catch((error, data) => { error })

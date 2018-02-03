@@ -6,16 +6,27 @@
 //}
 
 const path = require('path')
+const fs = require('fs')
 
-var serverConfig = {
+let nodeModules = {};
+fs.readdirSync('node_modules')
+    .filter(function(x) {
+        return ['.bin'].indexOf(x) === -1;
+    })
+    .forEach(function(mod) {
+        nodeModules[mod] = 'commonjs ' + mod;
+    });
+
+module.exports.server = {
   target: 'node',
   entry: {
-    bundle: './src/server.jsx'
+    server: './src/server/server.jsx'
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'server.js'
   },
+  externals: nodeModules,
   module: {
       loaders: [
           {
@@ -27,14 +38,14 @@ var serverConfig = {
   }
 };
 
-var clientConfig = {
+module.exports.client = {
   target: 'web',
   entry: {
-      bundle: './src/client.jsx'
+      bundle: './src/client/client.jsx'
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'lib.js'
+    filename: 'bundle.js'
   },
   module: {
       loaders: [
@@ -47,4 +58,21 @@ var clientConfig = {
   }
 };
 
-module.exports =  [ serverConfig, clientConfig ];
+// module.exports = {
+//     entry: {
+//         bundle: './src/client.jsx'
+//     },
+//     output: {
+//         path: path.join(__dirname, 'dist'),
+//         filename: 'bundle.js'
+//     },
+//     module: {
+//         loaders: [
+//             {
+//                 loader: 'babel-loader?cacheDirectory=true',
+//                 exclude: /node_modules/,
+//                 test: /\.js[x]?$/,
+//             }
+//         ]
+//     }
+// }

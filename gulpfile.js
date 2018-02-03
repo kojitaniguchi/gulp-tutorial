@@ -7,13 +7,13 @@ const runSequence = require('run-sequence')
 
 
 // webpackの設定ファイルの読み込み
-const {serverConfig, clientConfig} = require("./webpack.config")
+const webpackConfig = require("./webpack.config")
 
 
 // webpack
 gulp.task('serverWebpack', () => {
   // webpackStreamの第2引数にwebpackを渡す
-  return webpackStream(serverConfig, webpack)
+  return webpackStream(webpackConfig.server, webpack)
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.reload({
       stream: true,
@@ -22,7 +22,7 @@ gulp.task('serverWebpack', () => {
 })
 
 gulp.task('clientWebpack', () => {
-  return webpackStream(clientConfig, webpack)
+  return webpackStream(webpackConfig.client, webpack)
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.reload({
       stream: true,
@@ -50,10 +50,13 @@ gulp.task('bs-reload', () => {
 // watch
 gulp.task('watch', () => {
   // src 配下の *.js ファイル,dist 配下の *.html,が変更されたときリロード。
-  return gulp.watch("./src/**/*.jsx", ['webpack'])
+  return gulp.watch("./src/server/server.jsx", ['serverWebpack'])
+  return gulp.watch("./src/client/**/**/*.jsx", ['clientWebpack'])
   return gulp.watch("dist/*.js", ['bs-reload'])
   return gulp.watch("dist/*.html", ['bs-reload'])
 })
 
 // default
-gulp.task("default", ['serverWebpack', 'clientWebpack','bs','watch','bs-reload'] )
+gulp.task("default", () => {
+  runSequence('serverWebpack','clientWebpack','bs','watch' )
+})
