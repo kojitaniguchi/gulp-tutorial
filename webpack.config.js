@@ -23,7 +23,7 @@ module.exports.server = {
     server: './src/server/server.jsx'
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/server'),
     filename: 'server.js'
   },
   externals: nodeModules,
@@ -44,7 +44,7 @@ module.exports.client = {
       bundle: './src/client/client.jsx'
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/client'),
     filename: 'bundle.js'
   },
   module: {

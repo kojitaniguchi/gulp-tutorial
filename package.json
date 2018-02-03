@@ -43,6 +43,7 @@
     "eslint-plugin-react": "^7.6.1",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
     "gulp-watch": "^4.3.11",
     "prop-types": "^15.6.0",
     "redux-logger": "^3.0.6",

@@ -5,5 +5,7 @@
 /.npm-debug.log
 
 /dist/.DS_Store
-/dist/bundle.js
-/dist/server.js
+/dist/client/bundle.js
+/dist/server/server.js
+
+/.env
