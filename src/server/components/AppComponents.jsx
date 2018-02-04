@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import FormApp from './Form/FormApp.jsx'
 import HomeApp from './Home/HomeApp.jsx'
 import ImageApp from './Image/ImageApp.jsx'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { StaticRouter, Route, Link } from 'react-router-dom'
 
 // Container Components
 export default class App extends React.Component {
   render() {
+  const context = {}
     return (
-      <BrowserRouter>
+      <StaticRouter context={context}>
         <div>
           <div className="header">
             <ul>
@@ -25,7 +26,7 @@ export default class App extends React.Component {
             <Route path='/image' render={props => <ImageApp getImage={this.props.getImage} data={this.props.data} error={this.props.error}/>} />
           </div>
         </div>
-      </BrowserRouter>
+      </StaticRouter>
     )
   }
 }

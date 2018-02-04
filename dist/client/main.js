@@ -1,7 +1,7 @@
 'use strict'
 
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('./sw.js', {scope: './index.html'})
+  navigator.serviceWorker.register('./sw.js')
            .then((registration) => {
              console.log(`ServiceWorker registration successful with scope: ${registration.scope}`)
            })

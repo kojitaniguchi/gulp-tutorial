@@ -10,7 +10,6 @@ const urlToCache = [
 ]
 
 self.addEventListener('install', (event) => {
-  debugger
   // waitUntil()の内部のコードが成功裡に実行されるまで、Service Workerがインストールされない
   event.waitUntil(
   // open生成されたキャッシュのためにpromiseを返す

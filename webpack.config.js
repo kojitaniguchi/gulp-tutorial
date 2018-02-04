@@ -44,7 +44,7 @@ module.exports.client = {
       bundle: './src/client/client.jsx'
   },
   output: {
-    path: path.join(__dirname, 'dist/client'),
+    path: path.join(__dirname, 'dist/client/javascript'),
     filename: 'bundle.js'
   },
   module: {

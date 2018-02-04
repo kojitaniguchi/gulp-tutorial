@@ -1,10 +1,26 @@
 // react関連-----------------------------
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import AppContainer from './../client/containers/AppContainer.jsx'
+import { Provider } from 'react-redux'
 
-// express関連---------------------------
-import express from 'express'
+// Container
+import AppContainer from './containers/AppContainer.jsx'
+
+// Store
+import { createStore, applyMiddleware } from 'redux'
+
+// sagaMiddleware
+import { createLogger } from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './store/sagas.jsx'
+
+// reducers
+import Reducers from './reducers/AppReducer.jsx'
+
+const sagaMiddleware = createSagaMiddleware()
+const logger = createLogger()
+const store = createStore(Reducers, applyMiddleware(sagaMiddleware, logger))
+sagaMiddleware.run(rootSaga)
 
 // expressでFetchAPIを使うため-----------
 import "isomorphic-fetch"
@@ -17,21 +33,27 @@ dotenv.config()
 const apiKey = process.env.API_KEY
 const cxKey = process.env.CX_KEY
 
+// express関連---------------------------
+import express from 'express'
+import path from 'path'
 const app = express()
 
+app.use(express.static('dist/client/'))
 
-app.use(express.static('dist'))
+import Html from './Html.jsx'
 
 app.get('/', (req, res) => {
   res.send(
-    ReactDOMServer.renderToString(
-      <div>
-        <div className="content">
-          <AppContainer />
-        </div>
-      </div>
+        ReactDOMServer.renderToStaticMarkup(
+            <Html
+                markup={ReactDOMServer.renderToString(
+                  <Provider store={store}>
+                    <AppContainer />
+                  </Provider>
+                )}
+            />
+        )
     )
-  )
 })
 
 app.get('/image/:keyword', (req, res, next) => {
@@ -40,7 +62,7 @@ app.get('/image/:keyword', (req, res, next) => {
   fetch(URL)
     .then(parseJson)
     .then(getSrc)
-    .then(returnJson)
+    // .then(returnJson)
 
   function parseJson(res) {
     let json = res.json()
@@ -49,13 +71,13 @@ app.get('/image/:keyword', (req, res, next) => {
 
   function getSrc(json) {
     const src = json["items"][1]["link"]
-    return src
+    res.json({ "data" : src })
   }
 
-  function returnJson(src) {
-    const json = { "data": src }
-    res.send(json)
-  }
+  // function returnJson(src) {
+  //   const json = { "data": src }
+  //   res.send(json)
+  // }
 
 })
 

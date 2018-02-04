@@ -7,7 +7,7 @@
     "production": "webpack -p",
     "develop": "webpack -d",
     "watch": "webpack -d --watch",
-    "start": "node dist/server.js",
+    "start": "node dist/server/server.js",
     "server": "browser-sync start --server --files \"**/*\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -36,7 +36,7 @@
     "babel-preset-react": "^6.24.1",
     "browser-sync": "^2.23.6",
     "create-react-class": "^15.6.3",
-    "eslint": "^4.16.0",
+    "eslint": "^4.17.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",

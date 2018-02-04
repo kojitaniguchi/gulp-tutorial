@@ -33004,46 +33004,54 @@ var App = function (_React$Component) {
           'div',
           null,
           _react2.default.createElement(
-            'ul',
-            null,
+            'div',
+            { className: 'header' },
             _react2.default.createElement(
-              'li',
+              'ul',
               null,
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/' },
-                'Home'
-              )
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
+                'li',
+                null,
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/' },
+                  'Home'
+                )
+              ),
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/form' },
-                'Form'
-              )
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
+                'li',
+                null,
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/form' },
+                  'Form'
+                )
+              ),
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/image' },
-                'Image'
+                'li',
+                null,
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/image' },
+                  'Image'
+                )
               )
             )
           ),
           _react2.default.createElement('hr', null),
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render(props) {
-              return _react2.default.createElement(_HomeApp2.default, { value: _this2.props.value });
-            } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/form', render: function render(props) {
-              return _react2.default.createElement(_FormApp2.default, { handleClick: _this2.props.handleClick, value: _this2.props.value });
-            } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/image', render: function render(props) {
-              return _react2.default.createElement(_ImageApp2.default, { getImage: _this2.props.getImage, data: _this2.props.data, error: _this2.props.error });
-            } })
+          _react2.default.createElement(
+            'div',
+            { className: 'main' },
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render(props) {
+                return _react2.default.createElement(_HomeApp2.default, { value: _this2.props.value });
+              } }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/form', render: function render(props) {
+                return _react2.default.createElement(_FormApp2.default, { handleClick: _this2.props.handleClick, value: _this2.props.value });
+              } }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/image', render: function render(props) {
+                return _react2.default.createElement(_ImageApp2.default, { getImage: _this2.props.getImage, data: _this2.props.data, error: _this2.props.error });
+              } })
+          )
         )
       );
     }

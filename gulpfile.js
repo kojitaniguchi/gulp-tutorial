@@ -16,7 +16,7 @@ const webpackConfig = require("./webpack.config")
 gulp.task('serverWebpack', () => {
   // webpackStreamの第2引数にwebpackを渡す
   return webpackStream(webpackConfig.server, webpack)
-    .pipe(gulp.dest("dist"))
+    .pipe(gulp.dest("dist/server"))
     .pipe(browserSync.reload({
       stream: true,
       once  : true
@@ -25,7 +25,7 @@ gulp.task('serverWebpack', () => {
 
 gulp.task('clientWebpack', () => {
   return webpackStream(webpackConfig.client, webpack)
-    .pipe(gulp.dest("dist"))
+    .pipe(gulp.dest("dist/client/javascript"))
     .pipe(browserSync.reload({
       stream: true,
       once  : true
@@ -33,26 +33,32 @@ gulp.task('clientWebpack', () => {
 })
 
 gulp.task('nodemon', (cb) => {
-    let called = false
-    return nodemon({
-        script: 'dist/server/server.js',
-        ignore: [  // nodemon で監視しないディレクトリ
-          './'
-        ],
-    }).on('start', () => {
-        if (!called) {
-            called = true
-            cb()
-        }
-    })
+  let called = false
+  return nodemon({
+      script: 'dist/server/server.js',
+      watch:'dist/server/',
+      ext: 'js',
+      ignore: [  // nodemon で監視しないディレクトリ
+        'src/'
+      ],
+  }).on('start', () => {
+      if (!called) {
+          called = true
+          cb()
+      }
+  }).on('restart', () => {
+      setTimeout(() => {
+          browserSync.reload()
+      }, 500)
+  })
 })
 
 gulp.task("bs", ['nodemon'], () => {
     browserSync.init(null, {
         proxy:"localhost:3000",
         open:false,
+        serveStatic: ['.', './dist/client'],
         port:"7000",
-        serveStatic:["./dist/client"],
         minify:true
     })
 })
@@ -65,9 +71,8 @@ gulp.task('bs-reload', () => {
 gulp.task('watch', () => {
   // src 配下の *.js ファイル,dist 配下の *.html,が変更されたときリロード。
   return gulp.watch("./src/server/server.jsx", ['serverWebpack'])
-  return gulp.watch("./src/client/**/**/*.jsx", ['clientWebpack'])
-  return gulp.watch("dist/client/*.*", ['bs-reload'])
-  return gulp.watch("dist/server/server.js", ['bs-reload'])
+  return gulp.watch("./src/client/javascript/bundle.js", ['clientWebpack'])
+  return gulp.watch("./dist/client/*", ['bs-reload'])
 })
 
 // default
