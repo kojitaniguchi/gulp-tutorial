@@ -1,4 +1,0 @@
-export const SEND_VALUE = 'SEND_VALUE'
-export const REQUEST_IMAGE = 'REQUEST_IMAGE'
-export const SUCCESS_USER = 'SUCCESS_USER'
-export const FAILURE_USER = 'FAILURE_USER'

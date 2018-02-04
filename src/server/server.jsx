@@ -4,22 +4,10 @@ import ReactDOMServer from 'react-dom/server'
 import { Provider } from 'react-redux'
 
 // Container
-import AppContainer from './containers/AppContainer.jsx'
+import AppContainer from './components/serverAppContainer.jsx'
 
 // Store
-import { createStore, applyMiddleware } from 'redux'
-
-// sagaMiddleware
-import { createLogger } from 'redux-logger'
-import createSagaMiddleware from 'redux-saga'
-import rootSaga from './store/sagas.jsx'
-
-// reducers
-import Reducers from './reducers/AppReducer.jsx'
-
-const sagaMiddleware = createSagaMiddleware()
-const logger = createLogger()
-const store = createStore(Reducers, applyMiddleware(sagaMiddleware, logger))
+import { store, sagaMiddleware, rootSaga } from './../assets/store/store.jsx'
 sagaMiddleware.run(rootSaga)
 
 // expressでFetchAPIを使うため-----------

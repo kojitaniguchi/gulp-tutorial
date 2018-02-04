@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import App from './../components/AppComponents.jsx'
-import actions from './../actions/actions.jsx'
+import serverApp from './serverAppComponents.jsx'
+import actions from './../../assets/actions/actions.jsx'
 
 // Sotreのstateをpropsを通して、Container Componentsで使えるようにする関数
 let mapStateToProps = (state) => {
@@ -14,6 +14,7 @@ let mapStateToProps = (state) => {
 // Storeのdispatchメソッドをpropsを通して、Container Componentsで使えるようにする関数
 let mapDispatchToProps = (dispatch) => {
   return {
+
     // dispatcher : dispatchメソッド（引数はAction Creator）
     handleClick: (value) => {
       console.log(actions.sendValue(value)),
@@ -30,6 +31,6 @@ let mapDispatchToProps = (dispatch) => {
 const AppContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(serverApp)
 
 export default AppContainer

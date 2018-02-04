@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FormApp from './Form/FormApp.jsx'
-import HomeApp from './Home/HomeApp.jsx'
-import ImageApp from './Image/ImageApp.jsx'
+import FormApp from './../../assets/components/Form/FormApp.jsx'
+import HomeApp from './../../assets/components/Home/HomeApp.jsx'
+import ImageApp from './../../assets/components/Image/ImageApp.jsx'
 import { StaticRouter, Route, Link } from 'react-router-dom'
 
 // Container Components
-export default class App extends React.Component {
+export default class serverApp extends React.Component {
   render() {
   const context = {}
     return (
@@ -30,7 +30,7 @@ export default class App extends React.Component {
     )
   }
 }
-App.propTypes = {
+serverApp.propTypes = {
   handleClick: PropTypes.func.isRequired,
   value: PropTypes.string,
   getImage: PropTypes.func.isRequired,

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import App from './../components/AppComponents.jsx'
-import actions from './../actions/actions.jsx'
+import clientApp from './clientAppComponents.jsx'
+import actions from './../../assets/actions/actions.jsx'
 
 // Sotreのstateをpropsを通して、Container Componentsで使えるようにする関数
 let mapStateToProps = (state) => {
@@ -31,6 +31,6 @@ let mapDispatchToProps = (dispatch) => {
 const AppContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(clientApp)
 
 export default AppContainer
