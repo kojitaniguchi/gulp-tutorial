@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions'
 import actions from './../actions/actions.jsx'
+import ImageData from './../immutable/models.jsx'
 
 const initialState = {
   data: '',
