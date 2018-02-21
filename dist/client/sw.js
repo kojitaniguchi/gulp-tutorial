@@ -2,7 +2,8 @@
 
 const CACHE_NAME = 'cache-v1'
 const urlToCache = [
-  'index.html',
+  './',
+  './index.html',
   './main.js',
   './sw.js',
   './manifest.json',
