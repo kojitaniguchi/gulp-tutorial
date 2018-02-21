@@ -33329,7 +33329,7 @@ var HomeApp = function (_React$Component) {
         _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement('img', { src: 'img/neko.jpg' })
+          _react2.default.createElement('img', { src: './img/neko.jpg' })
         ),
         _react2.default.createElement(
           'div',

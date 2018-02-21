@@ -2,13 +2,14 @@
 
 const CACHE_NAME = 'cache-v2'
 const urlToCache = [
-  '/',
-  'main.js',
-  'manifest.json',
-  'javascript/bundle.js',
-  'img/neko.jpg'
+  './',
+  './main.js',
+  './sw.js',
+  './manifest.json',
+  './javascript/bundle.js',
+  './img/neko.jpg'
 ]
-
+// selfでServiceWorkerGlobalScopeを参照
 self.addEventListener('install', (event) => {
   console.info('install', event)
   // waitUntil()の内部のコードが成功裡に実行されるまで、Service Workerがインストールされない
@@ -67,4 +68,8 @@ self.addEventListener('fetch', (event) => {
               })
           })
   )
+})
+
+self.addEventListener('push', (event) => {
+  console.info('push', event)
 })
