@@ -11,6 +11,7 @@ const Html = (props) => {
         <body>
           <div className="content" dangerouslySetInnerHTML={ {__html: props.markup} }></div>
           <script src="./javascript/bundle.js" />
+          <script src="./main.js" />
         </body>
       </html>
     )

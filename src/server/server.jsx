@@ -30,7 +30,10 @@ app.use(express.static('dist/client/'))
 
 import Html from './Html.jsx'
 
-app.get('/', (req, res) => {
+app.get('/', express.static('dist/client/') )
+
+
+app.get('/react', (req, res) => {
   res.send(
         ReactDOMServer.renderToStaticMarkup(
             <Html
@@ -50,7 +53,6 @@ app.get('/image/:keyword', (req, res, next) => {
   fetch(URL)
     .then(parseJson)
     .then(getSrc)
-    // .then(returnJson)
 
   function parseJson(res) {
     let json = res.json()
@@ -61,11 +63,6 @@ app.get('/image/:keyword', (req, res, next) => {
     const src = json["items"][1]["link"]
     res.json({ "data" : src })
   }
-
-  // function returnJson(src) {
-  //   const json = { "data": src }
-  //   res.send(json)
-  // }
 
 })
 

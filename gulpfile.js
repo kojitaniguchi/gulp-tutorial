@@ -6,6 +6,9 @@ const browserSync = require('browser-sync').create()
 const runSequence = require('run-sequence')
 const nodemon = require("gulp-nodemon")
 const path = require("path")
+const uglify = require('gulp-uglify')
+const rename = require('gulp-rename')
+const plumber = require('gulp-plumber')
 
 
 // webpackの設定ファイルの読み込み

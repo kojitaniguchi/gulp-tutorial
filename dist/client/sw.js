@@ -1,15 +1,17 @@
-'use strict'
+'use strict';
 
 const CACHE_NAME = 'cache-v1'
 const urlToCache = [
-  '/',
-  '/index.html',
-  '/main.js',
-  '/bundle.js',
-  '/sw.js',
+  'index.html',
+  './main.js',
+  './sw.js',
+  './manifest.json',
+  './javascript/bundle.js',
+  './img/neko.jpg'
 ]
 
 self.addEventListener('install', (event) => {
+  console.log('start install')
   // waitUntil()の内部のコードが成功裡に実行されるまで、Service Workerがインストールされない
   event.waitUntil(
   // open生成されたキャッシュのためにpromiseを返す
@@ -38,7 +40,6 @@ self.addEventListener('active', (event) => {
 })
 
 self.addEventListener('fetch', (event) => {
-  debugger
   // onfetchイベントハンドラはfetchイベントをlistenし、発火すると、respondWithは制御されたページにpromiseを返す。
   event.respondWith(
   // このpromiseはCacheオブジェクト内で最初にマッチしたURLリクエストで解決する。
@@ -47,6 +48,7 @@ self.addEventListener('fetch', (event) => {
             if (response) {
               return response
             }
+            console.log('fetch network')
             // マッチするものが見つからない場合、ネットワークからレスポンスを取得する。
             // responseとrequestはstreamなのでcloneする
             let fetchRequest = event.request.clone()
