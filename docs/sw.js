@@ -1,18 +1,16 @@
-'use strict';
+'use strict'
 
-const CACHE_NAME = 'cache-v1'
+const CACHE_NAME = 'cache-v2'
 const urlToCache = [
-  './',
-  './index.html',
-  './main.js',
-  './sw.js',
-  './manifest.json',
-  './javascript/bundle.js',
-  './img/neko.jpg'
+  '/',
+  'main.js',
+  'manifest.json',
+  'javascript/bundle.js',
+  'img/neko.jpg'
 ]
 
 self.addEventListener('install', (event) => {
-  console.log('start install')
+  console.info('install', event)
   // waitUntil()の内部のコードが成功裡に実行されるまで、Service Workerがインストールされない
   event.waitUntil(
   // open生成されたキャッシュのためにpromiseを返す
@@ -20,28 +18,29 @@ self.addEventListener('install', (event) => {
           .then((cache) => {
             console.log('Opened cache')
             return cache.addAll(urlToCache)
-          })
+          }),
   )
 })
 
-self.addEventListener('active', (event) => {
-  console.log('serviceWorker is active now!')
-  var cacheWhiteList = [CACHE_NAME]
-  event.waitUntil(
-    caches.keys().then(console.log(c)).then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheWhiteList.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName)
-          }
+self.addEventListener('activate', (event) => {
+    console.info('activate', event)
+    var cacheWhitelist = [CACHE_NAME]
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (cacheWhitelist.indexOf(cacheName) === -1) {
+                        return caches.delete(cacheName)
+                    }
+                })
+            )
         })
-      )
-    })
-  )
+    )
 })
 
 self.addEventListener('fetch', (event) => {
-  // onfetchイベントハンドラはfetchイベントをlistenし、発火すると、respondWithは制御されたページにpromiseを返す。
+  console.info('fetch', event)
+  // onfetchイベントハンドラはFetchEventをlistenし、発火すると、respondWithはコントロールされたページにpromiseを返す。
   event.respondWith(
   // このpromiseはCacheオブジェクト内で最初にマッチしたURLリクエストで解決する。
     caches.match(event.request)

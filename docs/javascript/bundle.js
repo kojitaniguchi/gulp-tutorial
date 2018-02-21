@@ -33020,13 +33020,13 @@ var clientApp = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'main' },
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/react_redux/', render: function render(props) {
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render(props) {
                 return _react2.default.createElement(_HomeApp2.default, { value: _this2.props.value });
               } }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/react_redux/form', render: function render(props) {
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/form', render: function render(props) {
                 return _react2.default.createElement(_FormApp2.default, { handleClick: _this2.props.handleClick, value: _this2.props.value });
               } }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/react_redux/image', render: function render(props) {
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/image', render: function render(props) {
                 return _react2.default.createElement(_ImageApp2.default, { getImage: _this2.props.getImage, data: _this2.props.data, error: _this2.props.error });
               } })
           )
