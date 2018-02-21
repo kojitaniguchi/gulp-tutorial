@@ -20,9 +20,9 @@ export default class clientApp extends React.Component {
           </div>
           <hr />
           <div className="main">
-            <Route exact path='/react-redux/' render={props => <HomeApp value={this.props.value} />} />
-            <Route path='/react-redux/form' render={props => <FormApp handleClick={this.props.handleClick} value={this.props.value} />} />
-            <Route path='/react-redux/image' render={props => <ImageApp getImage={this.props.getImage} data={this.props.data} error={this.props.error}/>} />
+            <Route exact path='/' render={props => <HomeApp value={this.props.value} />} />
+            <Route path='/form' render={props => <FormApp handleClick={this.props.handleClick} value={this.props.value} />} />
+            <Route path='/image' render={props => <ImageApp getImage={this.props.getImage} data={this.props.data} error={this.props.error}/>} />
           </div>
         </div>
       </BrowserRouter>
