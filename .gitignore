@@ -9,3 +9,5 @@
 /dist/server/server.js
 
 /.env
+
+/push.js

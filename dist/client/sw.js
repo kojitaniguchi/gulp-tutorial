@@ -3,16 +3,16 @@
 const CACHE_NAME = 'cache-v2'
 const urlToCache = [
   './',
-  './main.js',
   './sw.js',
   './manifest.json',
+  './javascript/main.js',
   './javascript/bundle.js',
   './img/neko.jpg'
 ]
 // selfでServiceWorkerGlobalScopeを参照
 self.addEventListener('install', (event) => {
   console.info('install', event)
-  // waitUntil()の内部のコードが成功裡に実行されるまで、Service Workerがインストールされない
+  // waitUntil()の内部のコードが解決されるまで、Service Workerがインストールされない
   event.waitUntil(
   // open生成されたキャッシュのためにpromiseを返す
     caches.open(CACHE_NAME)
@@ -20,6 +20,7 @@ self.addEventListener('install', (event) => {
             console.log('Opened cache')
             return cache.addAll(urlToCache)
           }),
+    self.skipWaiting()
   )
 })
 
@@ -70,6 +71,23 @@ self.addEventListener('fetch', (event) => {
   )
 })
 
+// ServiceWorkerGlobalScope.onpush
 self.addEventListener('push', (event) => {
   console.info('push', event)
+  // Push API の PushMessageData インターフェース
+  // messageをpayloadしている場合はevent.dataにデータが入っている
+  const payload = event.data ? event.data.json() : { error: 'error' }
+  const title = payload.title
+  const message = payload.message
+  event.waitUntil(
+    // showNotification() creates a notification on an active service worker
+    self.registration.showNotification(title, {
+      body: message,
+      icon: './img/neko.jpg',
+    }),
+  )
+})
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close()
 })
