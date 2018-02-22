@@ -33020,13 +33020,13 @@ var clientApp = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'main' },
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render(props) {
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/react_redux/', render: function render(props) {
                 return _react2.default.createElement(_HomeApp2.default, { value: _this2.props.value });
               } }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/form', render: function render(props) {
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/react_redux/form', render: function render(props) {
                 return _react2.default.createElement(_FormApp2.default, { handleClick: _this2.props.handleClick, value: _this2.props.value });
               } }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/image', render: function render(props) {
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/react_redux/image', render: function render(props) {
                 return _react2.default.createElement(_ImageApp2.default, { getImage: _this2.props.getImage, data: _this2.props.data, error: _this2.props.error });
               } })
           )
@@ -33329,7 +33329,7 @@ var HomeApp = function (_React$Component) {
         _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement('img', { src: 'img/neko.jpg' })
+          _react2.default.createElement('img', { src: './img/neko.jpg' })
         ),
         _react2.default.createElement(
           'div',
@@ -38544,9 +38544,9 @@ var _effects = __webpack_require__(250);
 
 __webpack_require__(495);
 
-var _api = __webpack_require__(697);
+var _fetchData = __webpack_require__(697);
 
-var _api2 = _interopRequireDefault(_api);
+var _fetchData2 = _interopRequireDefault(_fetchData);
 
 var _actions = __webpack_require__(99);
 
@@ -38568,7 +38568,7 @@ function requestImage(action) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return (0, _effects.call)(_api2.default, action.payload);
+          return (0, _effects.call)(_fetchData2.default, action.payload);
 
         case 2:
           _ref = _context.sent;

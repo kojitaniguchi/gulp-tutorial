@@ -30,10 +30,38 @@ app.use(express.static('dist/client/'))
 
 import Html from './Html.jsx'
 
-app.get('/', express.static('dist/client/') )
 
+// // serviceWorker--VAPID-----------------------------
+// import webPush from 'web-push'
+// const vapidKeys = webPush.generateVAPIDKeys()
+//
+// app.post('/send/webpush', (req, res) => {
+//
+//   const pushSubscription = {
+//       endpoint: req.body.endpoint,
+//       keys: {
+//           p256dh: req.body.p256dh,
+//           auth: req.body.auth
+//       }
+//   }
+//   // payloadはswではevent.dataに格納されている
+//   const payload = Buffer.from(JSON.stringify({
+//     title: req.body.title,
+//     body: req.body.body,
+//     icon: req.body.icon,
+//     link: req.body.link,
+//   }))
+//
+//   webpush.sendNotification(pushSubscription, payload, options)
+//   .then((result) => {
+//     console.info('Sucess!', result)
+//   })
+//   .catch((err) => {
+//     console.log('fail', err)
+//   })
+// })
 
-app.get('/react', (req, res) => {
+app.get('/', (req, res) => {
   res.send(
         ReactDOMServer.renderToStaticMarkup(
             <Html
@@ -58,49 +86,11 @@ app.get('/image/:keyword', (req, res, next) => {
     let json = res.json()
     return json
   }
-
   function getSrc(json) {
     const src = json["items"][1]["link"]
     res.json({ "data" : src })
   }
-
 })
-
-
-/* httpsモジュールを使ったgetリクエスト*/
-// import https from 'https'
-// https.get(URL, (res) => {
-//     let body = ''
-//     res.on('data', (chunk) => {
-//         body += chunk;
-//     })
-//     res.on('end', (res) => {
-//       console.log('end start', json)
-//       res = JSON.parse(body || "null")
-//       let src = res["items"][0]["link"]
-//       json.data = src
-//       console.log('end fin', json)
-//     })
-//      .on('error', (e) => {
-//       console.log(e.message) //エラー時
-//      })
-//   })
-// console.log('before send', json)
-// res.send(json)
-
-/* superagentを使ったgetリクエスト*/
-// import request from 'superagent'
-// request.get(URL)
-//   .end((err, res) => {
-//     if (res.ok) {
-//       console.log(res.status)
-//       const json = res.json()
-//       const data = json["items"][1]["link"]
-//       return { "data": data }
-//     } else {
-//       console.log('error')
-//     }
-//   })
 
 // start listen
 app.listen(3000, () => {

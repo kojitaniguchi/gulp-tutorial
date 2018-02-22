@@ -33569,7 +33569,7 @@ var ImageForm = function (_React$Component) {
           }, defaultValue: '\u30E1\u30ED\u30F3' }),
         _react2.default.createElement(
           'button',
-          { onClick: function onClick(event) {
+          { id: 'button', onClick: function onClick(event) {
               return _this2.send(event);
             } },
           'Send'
@@ -38544,9 +38544,9 @@ var _effects = __webpack_require__(250);
 
 __webpack_require__(495);
 
-var _api = __webpack_require__(697);
+var _fetchData = __webpack_require__(697);
 
-var _api2 = _interopRequireDefault(_api);
+var _fetchData2 = _interopRequireDefault(_fetchData);
 
 var _actions = __webpack_require__(99);
 
@@ -38568,7 +38568,7 @@ function requestImage(action) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return (0, _effects.call)(_api2.default, action.payload);
+          return (0, _effects.call)(_fetchData2.default, action.payload);
 
         case 2:
           _ref = _context.sent;
@@ -43950,6 +43950,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
+    console.log(response);
     return response;
   } else {
     var error = new Error(response.statusText);
@@ -43977,6 +43978,7 @@ function fetchData(keyword) {
     error;
   });
 }
+
 exports.default = fetchData;
 
 /***/ }),

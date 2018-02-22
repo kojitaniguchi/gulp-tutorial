@@ -1,5 +1,6 @@
   function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
+    console.log(response)
      return response
     } else {
       var error = new Error(response.statusText)
@@ -28,4 +29,7 @@ function fetchData(keyword) {
     .then(parseJSON)
     .catch((error, data) => { error })
 }
+
+
+
 export default fetchData

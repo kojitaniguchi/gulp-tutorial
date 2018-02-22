@@ -42,6 +42,7 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   console.info('fetch', event)
+  console.log(event.request.url);
   // onfetchイベントハンドラはFetchEventをlistenし、発火すると、respondWithはコントロールされたページにpromiseを返す。
   event.respondWith(
   // このpromiseはCacheオブジェクト内で最初にマッチしたURLリクエストで解決する。
@@ -79,15 +80,20 @@ self.addEventListener('push', (event) => {
   const payload = event.data ? event.data.json() : { error: 'error' }
   const title = payload.title
   const message = payload.message
+  const icon = payload.icon
+  const tag = payload.tag
+  
   event.waitUntil(
     // showNotification() creates a notification on an active service worker
     self.registration.showNotification(title, {
       body: message,
-      icon: './img/neko.jpg',
+      icon: icon,
+      tag: tag
     }),
   )
 })
 
 self.addEventListener('notificationclick', (event) => {
+  console.info('notificationclick', event)
   event.notification.close()
 })

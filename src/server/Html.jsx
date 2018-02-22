@@ -5,13 +5,13 @@ const Html = (props) => {
       <html>
         <head>
           <meta charset="utf-8" />
-          <title>redux sample</title>
+          <title>redux sample ssr</title>
           <link rel="manifest" href="./manifest.json" />
         </head>
         <body>
           <div className="content" dangerouslySetInnerHTML={ {__html: props.markup} }></div>
           <script src="./javascript/bundle.js" />
-          <script src="./main.js" />
+          <script src="./javascript/main.js" />
         </body>
       </html>
     )

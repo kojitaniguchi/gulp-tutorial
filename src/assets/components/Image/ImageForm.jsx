@@ -10,7 +10,7 @@ export default class ImageForm extends React.Component {
     return (
       <form>
         <input type='text' ref={(ref) => this.myInput = ref } defaultValue="メロン" />
-        <button onClick={(event) => this.send(event)}>Send</button>
+        <button id='button' onClick={(event) => this.send(event)}>Send</button>
       </form>
     )
   }
