@@ -82,7 +82,7 @@ self.addEventListener('push', (event) => {
   const message = payload.message
   const icon = payload.icon
   const tag = payload.tag
-  
+
   event.waitUntil(
     // showNotification() creates a notification on an active service worker
     self.registration.showNotification(title, {

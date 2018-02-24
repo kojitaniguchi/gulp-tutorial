@@ -28,8 +28,26 @@ if ('serviceWorker' in navigator) {
              // エンドポイント
              let endpoint = subscription.endpoint
              console.log('GCM EndPoint is:' + endpoint )
+
+             const obj = {
+                p256dh: publicKey,
+                auth: auth,
+                endpoint: endpoint
+              }
+              return obj
+           })
+           .then((obj) => {
+             const body = JSON.stringify(obj)
+             const method = "POST"
+             const headers = {
+             'Content-Type': 'application/json'
+             }
+             fetch("/push/post", {method, headers, body})
            })
            .catch(console.error.bind(console))
+
+
+
 }
 //
 // window.addEventListener('load', async () => {

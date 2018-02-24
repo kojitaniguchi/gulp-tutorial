@@ -24,42 +24,12 @@ const cxKey = process.env.CX_KEY
 // express関連---------------------------
 import express from 'express'
 import path from 'path'
+import webPush from 'web-push'
 const app = express()
 
 app.use(express.static('dist/client/'))
 
 import Html from './Html.jsx'
-
-
-// // serviceWorker--VAPID-----------------------------
-// import webPush from 'web-push'
-// const vapidKeys = webPush.generateVAPIDKeys()
-//
-// app.post('/send/webpush', (req, res) => {
-//
-//   const pushSubscription = {
-//       endpoint: req.body.endpoint,
-//       keys: {
-//           p256dh: req.body.p256dh,
-//           auth: req.body.auth
-//       }
-//   }
-//   // payloadはswではevent.dataに格納されている
-//   const payload = Buffer.from(JSON.stringify({
-//     title: req.body.title,
-//     body: req.body.body,
-//     icon: req.body.icon,
-//     link: req.body.link,
-//   }))
-//
-//   webpush.sendNotification(pushSubscription, payload, options)
-//   .then((result) => {
-//     console.info('Sucess!', result)
-//   })
-//   .catch((err) => {
-//     console.log('fail', err)
-//   })
-// })
 
 app.get('/', (req, res) => {
   res.send(
@@ -73,6 +43,51 @@ app.get('/', (req, res) => {
             />
         )
     )
+})
+
+
+app.post('/push/post', (req, res) => {
+  const GCM_API_KEY = process.env.GCM_API_KEY
+  webPush.setGCMAPIKey(GCM_API_KEY)
+
+  const { headers, method, url } = req
+  let body = []
+  req.on('error', (err) => {
+    console.error(err)
+  }).on('data', (chunk) => {
+    body.push(chunk)
+  }).on('end', () => {
+    body = JSON.parse(body.toString())
+    console.log(body.endpoint)
+
+    const pushSubscription = {
+      endpoint: body.endpoint,
+      keys: {
+        auth: body.auth,
+        p256dh: body.p256dh
+      }
+    }
+
+    const payload = {
+      title: '和田どん',
+      message: 'スクール到来',
+      icon: 'https://kojitaniguchi.github.io/react_redux/img/neko.jpg',
+      tag: 'push7'
+    }
+    const bufferPayload = Buffer.from(JSON.stringify(payload))
+
+    const options = {
+      headers : {'Content-Type' : 'application/json' }
+    }
+
+    webPush.sendNotification(pushSubscription, bufferPayload, options)
+    .then((result) => {
+      console.info('Sucess!', result)
+    })
+    .catch((err) => {
+      console.log('fail', err)
+    })
+  })
 })
 
 app.get('/image/:keyword', (req, res, next) => {
@@ -93,6 +108,6 @@ app.get('/image/:keyword', (req, res, next) => {
 })
 
 // start listen
-app.listen(3000, () => {
-  console.log('SSR app listening on port 3000!')
+app.listen(process.env.PORT || 5000, () => {
+  console.log('SSR app listening on port 5000!')
 })
