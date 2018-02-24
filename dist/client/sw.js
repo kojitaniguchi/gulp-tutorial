@@ -42,7 +42,6 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   console.info('fetch', event)
-  console.log(event.request.url);
   // onfetchイベントハンドラはFetchEventをlistenし、発火すると、respondWithはコントロールされたページにpromiseを返す。
   event.respondWith(
   // このpromiseはCacheオブジェクト内で最初にマッチしたURLリクエストで解決する。

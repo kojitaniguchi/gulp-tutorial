@@ -12,23 +12,16 @@ if ('serviceWorker' in navigator) {
              return registration.pushManager.subscribe({userVisibleOnly: true})
            })
            .then((subscription) => {
-             // pushSubscriptionの詳細はsubscribeが終了してから
              // getKey()の戻り値はArrayBuffer型,Uint8Array型に変換してBase64URLエンコードして文字列に変換
              // subscription.getKey()の引数には鍵の種類を指定
             // 公開鍵
             let rawKey = subscription.getKey ? subscription.getKey('p256dh') : ''
             let publicKey = rawKey ? btoa(String.fromCharCode.apply(null, new Uint8Array(rawKey))) : ''
-            console.log('User PublicKey is:' + publicKey)
-
              // 鍵生成のための乱数
              let rawAuthSecret = subscription.getKey ? subscription.getKey('auth') : ''
              let auth = rawAuthSecret ? btoa(String.fromCharCode.apply(null, new Uint8Array(rawAuthSecret))) : ''
-             console.log('User Auth is:' + auth)
-
              // エンドポイント
              let endpoint = subscription.endpoint
-             console.log('GCM EndPoint is:' + endpoint )
-
              const obj = {
                 p256dh: publicKey,
                 auth: auth,
@@ -36,32 +29,20 @@ if ('serviceWorker' in navigator) {
               }
               return obj
            })
-           .then((obj) => {
-             const body = JSON.stringify(obj)
-             const method = "POST"
-             const headers = {
-             'Content-Type': 'application/json'
-             }
-             fetch("/push/post", {method, headers, body})
-           })
+           // .then((obj) => {
+           //   const body = JSON.stringify(obj)
+           //   const method = "POST"
+           //   const headers = {
+           //   'Content-Type': 'application/json'
+           //   }
+           //   fetch("/push/post", {method, headers, body})
+           // })
            .catch(console.error.bind(console))
 
-
+  navigator.serviceWorker.ready
+           .then((registration) => {
+             return registration.pushManager.getSubscription()
+           })
+           .then((subscription) => {console.log(subscription.toJSON())})
 
 }
-//
-// window.addEventListener('load', async () => {
-//   navigator.serviceWorker.register('./serviceworker.js');
-//   var sub = await getsubscription();
-//   if (!sub) {
-//     // ブラウザに通知許可を要求する
-//     var permission = await Notification.requestPermission();
-//     new Notification('WebPushの設定をしました');
-//     if (permission === 'denied') {
-//       return alert('ブラウザの通知設定をONにしてください');
-//     } else {
-//       sub = await initSubscribe();
-//     }
-//   }
-//   console.log(sub);
-// });

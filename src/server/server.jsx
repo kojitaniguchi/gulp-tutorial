@@ -58,8 +58,6 @@ app.post('/push/post', (req, res) => {
     body.push(chunk)
   }).on('end', () => {
     body = JSON.parse(body.toString())
-    console.log(body.endpoint)
-
     const pushSubscription = {
       endpoint: body.endpoint,
       keys: {
