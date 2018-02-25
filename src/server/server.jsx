@@ -27,6 +27,7 @@ import path from 'path'
 import webPush from 'web-push'
 const app = express()
 
+import { Subscription } from './models/subscription.jsx'
 app.use(express.static('dist/client/'))
 
 import Html from './Html.jsx'
@@ -46,44 +47,23 @@ app.get('/', (req, res) => {
 })
 
 
-app.post('/push/post', (req, res) => {
-  const GCM_API_KEY = process.env.GCM_API_KEY
-  webPush.setGCMAPIKey(GCM_API_KEY)
-
-  const { headers, method, url } = req
+app.post('/create/subscription', (req, res) => {
   let body = []
   req.on('error', (err) => {
     console.error(err)
-  }).on('data', (chunk) => {
+  })
+  .on('data', (chunk) => {
     body.push(chunk)
-  }).on('end', () => {
+  })
+  .on('end', () => {
     body = JSON.parse(body.toString())
-    const pushSubscription = {
-      endpoint: body.endpoint,
-      keys: {
-        auth: body.auth,
-        p256dh: body.p256dh
-      }
-    }
-
-    const payload = {
-      title: '和田どん',
-      message: 'スクール到来',
-      icon: 'https://kojitaniguchi.github.io/react_redux/img/neko.jpg',
-      tag: 'push7'
-    }
-    const bufferPayload = Buffer.from(JSON.stringify(payload))
-
-    const options = {
-      headers : {'Content-Type' : 'application/json' }
-    }
-
-    webPush.sendNotification(pushSubscription, bufferPayload, options)
-    .then((result) => {
-      console.info('Sucess!', result)
-    })
-    .catch((err) => {
-      console.log('fail', err)
+    Subscription.sync().then((s)  => {
+      s.create({
+          endpoint: body.endpoint,
+          auth: body.auth,
+          p256dh: body.p256dh
+      })
+      console.log('Subscription is Saved!')
     })
   })
 })
@@ -92,17 +72,14 @@ app.get('/image/:keyword', (req, res, next) => {
   const keyword = encodeURIComponent(req.params.keyword)
   const URL = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cxKey}&searchType=image&q=` + keyword
   fetch(URL)
-    .then(parseJson)
-    .then(getSrc)
-
-  function parseJson(res) {
-    let json = res.json()
-    return json
-  }
-  function getSrc(json) {
-    const src = json["items"][1]["link"]
-    res.json({ "data" : src })
-  }
+    .then((res) => {
+      let json = res.json()
+      return json
+    })
+    .then((json) => {
+      const src = json["items"][1]["link"]
+      res.json({ "data" : src })
+    })
 })
 
 // start listen

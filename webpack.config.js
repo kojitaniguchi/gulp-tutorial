@@ -1,9 +1,3 @@
-//module.exports = {
-//  entry: "./src/main.js",
-//  output: {
-//    filename: "bundle.js"
-//  }
-//}
 
 const path = require('path')
 const fs = require('fs')
@@ -57,22 +51,3 @@ module.exports.client = {
       ]
   }
 };
-
-// module.exports = {
-//     entry: {
-//         bundle: './src/client.jsx'
-//     },
-//     output: {
-//         path: path.join(__dirname, 'dist'),
-//         filename: 'bundle.js'
-//     },
-//     module: {
-//         loaders: [
-//             {
-//                 loader: 'babel-loader?cacheDirectory=true',
-//                 exclude: /node_modules/,
-//                 test: /\.js[x]?$/,
-//             }
-//         ]
-//     }
-// }

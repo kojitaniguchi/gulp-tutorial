@@ -16,17 +16,13 @@ const webpackConfig = require("./webpack.config")
 
 
 // webpack
-gulp.task('serverWebpack', () => {
+gulp.task('server', () => {
   // webpackStreamの第2引数にwebpackを渡す
   return webpackStream(webpackConfig.server, webpack)
     .pipe(gulp.dest("dist/server"))
-    .pipe(browserSync.reload({
-      stream: true,
-      once  : true
-    }))
 })
 
-gulp.task('clientWebpack', () => {
+gulp.task('client', () => {
   return webpackStream(webpackConfig.client, webpack)
     .pipe(gulp.dest("dist/client/javascript"))
     .pipe(browserSync.reload({
@@ -73,12 +69,12 @@ gulp.task('bs-reload', () => {
 // watch
 gulp.task('watch', () => {
   // src 配下の *.js ファイル,dist 配下の *.html,が変更されたときリロード。
-  return gulp.watch("./src/server/server.jsx", ['serverWebpack'])
-  return gulp.watch("./src/client/javascript/bundle.js", ['clientWebpack'])
+  return gulp.watch("./src/server/server.jsx", ['server'])
+  return gulp.watch("./src/client/javascript/bundle.js", ['client'])
   return gulp.watch("./dist/client/*", ['bs-reload'])
 })
 
 // default
 gulp.task("default", () => {
-  runSequence('serverWebpack','clientWebpack','bs','watch' )
+  runSequence('server','client','bs','watch' )
 })

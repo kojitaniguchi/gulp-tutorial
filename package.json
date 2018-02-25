@@ -21,12 +21,15 @@
     "express": "^4.16.2",
     "immutable": "^3.8.2",
     "isomorphic-fetch": "^2.2.1",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-actions": "^2.2.1"
+    "redux-actions": "^2.2.1",
+    "sequelize": "^4.33.4"
   },
   "devDependencies": {
     "babel": "^6.23.0",
