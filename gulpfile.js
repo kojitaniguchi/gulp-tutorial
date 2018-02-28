@@ -54,7 +54,7 @@ gulp.task('nodemon', (cb) => {
 
 gulp.task("bs", ['nodemon'], () => {
     browserSync.init(null, {
-        proxy:"localhost:3000",
+        proxy:"localhost:5000",
         open:false,
         serveStatic: ['.', './dist/client'],
         port:"7000",

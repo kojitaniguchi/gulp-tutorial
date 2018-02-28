@@ -53,18 +53,10 @@ self.addEventListener('fetch', (event) => {
             console.log('fetch network')
             // マッチするものが見つからない場合、ネットワークからレスポンスを取得する。
             // responseとrequestはstreamなのでcloneする
-            let fetchRequest = event.request.clone()
-            return fetch(fetchRequest)
+
+            return fetch(event.request)
               .then((response) => {
-                if(!response || response.status !== 200 || response.type !== 'basic') {
-                  return response
-                }
-                let responseToCache = response.clone()
-                caches.opne(CACHE_NAME)
-                      .then((cache) => {
-                        // cache.putはkey/valueをcacheオブジェクトに追加する
-                        cache.put(event.request, responseToCache)
-                      })
+                console.log(response)
                 return response
               })
           })
